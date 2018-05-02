@@ -1,11 +1,30 @@
 'use strict'
 
-const configListener = require('./lib/config_listener')
+const Messanger = require('./lib/Messanger')
+const Fields = require('./lin/Fields')
 
-exports.init = () => {
-  return configListener.listen()
+let initPromise
+
+function init () {
+  if (!initPromise) {
+    Fields.init()
+    initPromise = Messanger.listen(Fields.setMultiple)
+  }
+  return initPromise
 }
 
-exports.get = () => {
-  // TODO return overriden field if there is any, and if there isn't any return from config-js
+exports.set = function (name, value) {
+  return init()
+    .then(() => Messanger.send({ fields: [{ name: name, value: value }] }))
+    .then(() => Fields.set(name, value))
+}
+
+exports.setMultiple = function (fields) {
+  return init()
+    .then(() => Messanger.send({ fields: fields }))
+    .then(() => Fields.setMultiple(fields))
+}
+
+exports.get = function (name) {
+  return Fields.get(name)
 }
