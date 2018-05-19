@@ -21,7 +21,7 @@ exports.set = function (name, value) {
 
 exports.setMultiple = function (fields) {
   return init()
-    .then(() => Messanger.send({ fields: fields }))
+    .then(() => Messanger.send({ fields }))
     .then(() => Fields.setMultiple(fields))
 }
 

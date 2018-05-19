@@ -6,7 +6,6 @@
   "author": "Idan Stark <idanstark42@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "config": "^1.30.0",
     "mhub": "^0.9.1",
     "yamljs": "^0.3.0"
   },
