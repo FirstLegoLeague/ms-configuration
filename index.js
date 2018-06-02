@@ -1,7 +1,7 @@
 'use strict'
 
-const Messanger = require('./lib/Messanger')
-const Fields = require('./lin/Fields')
+const Messanger = require('./lib/messanger')
+const Fields = require('./lib/fields')
 
 let initPromise
 
@@ -27,4 +27,8 @@ exports.setMultiple = function (fields) {
 
 exports.get = function (name) {
   return Fields.get(name)
+}
+
+exports.all = function () {
+  return Fields.all()
 }
