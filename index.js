@@ -26,9 +26,9 @@ exports.setMultiple = function (fields) {
 }
 
 exports.get = function (name) {
-  return Fields.get(name)
+  return init().then(() => Fields.get(name))
 }
 
 exports.all = function () {
-  return Fields.all()
+  return init().then(() => Fields.all())
 }
