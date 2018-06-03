@@ -22,6 +22,8 @@ config.setMultiple([{ name: 'field1-name', value: 'field1-value' }, { name: 'fie
 
 ```
 
+If you add the environment variable `DEV=true`, the module would log into the `default` Mhub node instead of the MS sepcified `configuration` node.
+
 ## Development
 1. Fork this repository
 2. make some changes
