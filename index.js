@@ -7,11 +7,13 @@ let initPromise
 
 function init () {
   if (!initPromise) {
-    Fields.init()
-    initPromise = Messanger.listen(Fields.setMultiple)
+    initPromise = Fields.init()
+      .then(() => Messanger.listen(Fields.setMultiple))
   }
   return initPromise
 }
+
+init()
 
 exports.set = function (name, value) {
   return init()
