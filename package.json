@@ -6,11 +6,9 @@
   "author": "Idan Stark <idanstark42@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "jsonfile-promised": "^0.0.1",
+    "bluebird": "^3.5.1",
     "mhub": "^0.9.1",
-    "mkdirp-promise": "^5.0.1",
     "path": "^0.12.7",
-    "path-exists": "^3.0.0",
     "read-yaml-promise": "^1.0.2"
   },
   "devDependencies": {
