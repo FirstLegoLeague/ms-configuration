@@ -13,8 +13,6 @@ function init () {
   return initPromise
 }
 
-init()
-
 exports.set = function (name, value) {
   return init()
     .then(() => Messanger.send({ fields: [{ name: name, value: value }] }))
