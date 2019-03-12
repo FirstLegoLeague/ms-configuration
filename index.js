@@ -1,27 +1,42 @@
 'use strict'
 
-const Messenger = require('./lib/messenger')
+const path = require('path')
+const { Messenger } = require('@first-lego-league/ms-messenger')
+const logger = require('@first-lego-league/ms-logger').Logger()
+
 const Fields = require('./lib/fields')
+
+const moduleName = path.basename(path.resolve())
+const topic = `config:${moduleName}`
+const messenger = new Messenger({
+  logger,
+  node: 'configuration',
+  clientId: `${moduleName}_configuration`,
+  credentials: {
+    username: 'configuration',
+    password: process.env.SECRET
+  }
+})
 
 let initPromise
 
 function init () {
   if (!initPromise) {
     initPromise = Fields.init()
-      .then(() => Messenger.listen(Fields.setMultiple))
+      .then(() => messenger.on(topic, ({ data }) => Fields.setMultiple(data.fields)))
   }
   return initPromise
 }
 
 exports.set = function (name, value) {
   return init()
-    .then(() => Messenger.send({ fields: [{ name: name, value: value }] }))
+    .then(() => messenger.send(topic, { fields: [{ name: name, value: value }] }))
     .then(() => Fields.set(name, value))
 }
 
 exports.setMultiple = function (fields) {
   return init()
-    .then(() => Messenger.send({ fields }))
+    .then(() => messenger.send(topic, { fields }))
     .then(() => Fields.setMultiple(fields))
 }
 
