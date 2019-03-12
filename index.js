@@ -20,7 +20,7 @@ const messenger = new Messenger({
 
 let initPromise
 
-function init () {
+const init = () => {
   if (!initPromise) {
     initPromise = Fields.init()
       .then(() => messenger.on(topic, ({ data }) => Fields.setMultiple(data.fields)))
@@ -28,22 +28,22 @@ function init () {
   return initPromise
 }
 
-exports.set = function (name, value) {
+exports.set = (name, value) => {
   return init()
     .then(() => messenger.send(topic, { fields: [{ name: name, value: value }] }))
     .then(() => Fields.set(name, value))
 }
 
-exports.setMultiple = function (fields) {
+exports.setMultiple = fields => {
   return init()
     .then(() => messenger.send(topic, { fields }))
     .then(() => Fields.setMultiple(fields))
 }
 
-exports.get = function (name) {
+exports.get = name => {
   return init().then(() => Fields.get(name))
 }
 
-exports.all = function () {
+exports.all = () => {
   return init().then(() => Fields.all())
 }
