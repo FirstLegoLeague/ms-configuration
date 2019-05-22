@@ -1,7 +1,3 @@
-'use strict'
-/* global describe it */
-/* eslint-disable no-unused-expressions */
-
 const chai = require('chai')
 const proxyquire = require('proxyquire')
 const path = require('path')

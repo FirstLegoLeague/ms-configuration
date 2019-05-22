@@ -1,5 +1,3 @@
-'use strict'
-
 const path = require('path')
 const { Messenger } = require('@first-lego-league/ms-messenger')
 const logger = require('@first-lego-league/ms-logger').Logger()
