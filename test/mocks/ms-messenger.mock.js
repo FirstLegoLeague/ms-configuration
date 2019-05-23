@@ -27,5 +27,5 @@ exports.MessengerMock = {
 }
 
 exports.triggerListener = data => {
-  return messenger.listener(data)
+  return messenger.listener({ data })
 }

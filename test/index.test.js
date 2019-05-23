@@ -2,7 +2,7 @@ const chai = require('chai')
 const proxyquire = require('proxyquire')
 const path = require('path')
 
-const { MessengerMock, messenger } = require('./mocks/ms-messenger.mock')
+const { MessengerMock, messenger, triggerListener } = require('./mocks/ms-messenger.mock')
 const { FieldsMock } = require('./mocks/fields.mock')
 
 const expect = chai.expect
@@ -10,7 +10,10 @@ const expect = chai.expect
 const moduleName = path.basename(path.resolve())
 const TOPIC = `config:${moduleName}`
 
-const config = proxyquire('../', { '@first-lego-league/ms-messenger': MessengerMock, './lib/fields': FieldsMock })
+const config = proxyquire('../', {
+  '@first-lego-league/ms-messenger': MessengerMock,
+  './lib/fields': FieldsMock
+})
 
 function correctlyCalledInit () {
   expect(FieldsMock.init).to.have.been.called.once
@@ -18,6 +21,14 @@ function correctlyCalledInit () {
 }
 
 describe('ms-config index file', () => {
+  it('sets configuration when message sent', () => {
+    const fields = {}
+
+    return config.get()
+      .then(() => triggerListener({ fields }))
+      .then(() => expect(FieldsMock.setMultiple).to.have.been.called.with(fields))
+  })
+
   describe('set', () => {
     it('calls init', () => {
       return config.set()
@@ -85,9 +96,9 @@ describe('ms-config index file', () => {
         .then(() => correctlyCalledInit())
     })
 
-    it('calls Fields.get with the givven name', () => {
+    it('calls Fields.get with the given name', () => {
       return config.all()
-        .then(() => expect(FieldsMock.all).to.have.been.called)
+        .then(() => expect(FieldsMock.all).to.have.been.called())
     })
   })
 })
