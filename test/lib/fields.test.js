@@ -1,76 +1,128 @@
 const chai = require('chai')
+const chaiSpies = require('chai-spies')
 const proxyquire = require('proxyquire')
 
-const { ReadYamlPromiseMock, configWithDefaultValues } = require('../mocks/read_yaml_promise.mock')
+const readYamlPromise = require('../mocks/read_yaml_promise.mock')
 
-const fields = proxyquire('../../lib/fields', { 'read-yaml-promise': ReadYamlPromiseMock })
+chai.use(chaiSpies)
+
+let readYamlPromiseSpy
+
+const fields = proxyquire('../../lib/fields', {
+  'read-yaml-promise': function () {
+    return readYamlPromiseSpy.apply(this, arguments)
+  }
+})
 
 const expect = chai.expect
 
-describe('fields', () => {
-  describe('init', () => {
-    it('calls readYaml', () => {
+describe('Fields', () => {
+  let defaultValues
+
+  beforeEach(() => {
+    defaultValues = {}
+
+    readYamlPromiseSpy = readYamlPromise.createSpy(() => defaultValues)
+  })
+
+  afterEach(() => {
+    defaultValues = null
+    readYamlPromiseSpy = null
+  })
+
+  describe('initiation', () => {
+    it('reads yaml file', () => {
       return fields.init()
-        .then(() => expect(ReadYamlPromiseMock).to.have.been.called)
+        .then(() => expect(readYamlPromiseSpy).to.have.been.called())
     })
 
-    it('responds config', () => {
+    it('resolves to default config', () => {
+      defaultValues = {
+        'boolean-field': true,
+        'numeric-field': 5,
+        'string-field': 'string',
+        'values-field': 'value2'
+      }
+
       return fields.init()
-        .then(config => expect(config).to.eql(configWithDefaultValues))
+        .then(config => expect(config).to.be.deep.equal(defaultValues))
     })
   })
 
-  describe('all', () => {
-    it('returns a promise resolving to a copy of config', () => {
+  describe('multiple getter', () => {
+    it('resolves to config', () => {
+      defaultValues = {
+        'boolean-field': false,
+        'numeric-field': 8,
+        'string-field': 'some-string',
+        'values-field': 'value2'
+      }
+
       return fields.init()
         .then(() => fields.all())
-        .then(config => expect(config).to.eql(configWithDefaultValues))
+        .then(config => expect(config).to.be.deep.equal(defaultValues))
     })
 
-    it('changes to the copy does not change the original', () => {
+    it('resolves to a copy of config with no effects on configuration', () => {
+      defaultValues = {
+        'boolean-field': false,
+        'numeric-field': 8,
+        'string-field': 'some-string',
+        'values-field': 'value2'
+      }
+
       let original
       return fields.init()
         .then(config => { original = config })
         .then(() => fields.all())
         .then(newConfig => {
           newConfig[Object.keys(newConfig)[0]] = 'blue'
-          expect(original).to.eql(configWithDefaultValues)
+          expect(original).to.be.deep.equal(defaultValues)
         })
     })
   })
 
-  describe('get', () => {
-    it('returns a promise resolving to a value of the requested field', () => {
-      const key = Object.keys(configWithDefaultValues)[0]
-      const expectedValue = Object.values(configWithDefaultValues)[0]
+  describe('getter', () => {
+    it('resolves to the config value', () => {
+      defaultValues = {
+        'numeric-field': 230
+      }
+
       return fields.init()
-        .then(() => fields.get(key))
-        .then(value => expect(value).to.equal(expectedValue))
+        .then(() => fields.get('numeric-field'))
+        .then(value => expect(value).to.equal(230))
     })
   })
 
-  describe('set', () => {
-    it('sets the value of the requested field', () => {
-      const key = Object.keys(configWithDefaultValues)[0]
-      const newValue = false
+  describe('setter', () => {
+    it('changes the value of the field', () => {
+      defaultValues = {
+        'boolean-field': false
+      }
+
       return fields.init()
-        .then(() => fields.set(key, newValue))
-        .then(config => expect(config[key]).to.equal(newValue))
+        .then(() => fields.set('boolean-field', true))
+        .then(config => expect(config['boolean-field']).to.equal(true))
     })
   })
 
-  describe('setMultiple', () => {
-    it('sets the value of the requested field', () => {
-      const key1 = Object.keys(configWithDefaultValues)[0]
-      const newValue1 = false
-      const key2 = Object.keys(configWithDefaultValues)[1]
-      const newValue2 = 10
-      const fieldsToUpdate = [{ name: key1, value: newValue1 }, { name: key2, value: newValue2 }]
+  describe('multiple setter', () => {
+    it('changes the value of the fields', () => {
+      defaultValues = {
+        'values-field': 'value3',
+        'string-field': 'some-string'
+      }
+
+      const fieldsToUpdate = [
+        { name: 'values-field', value: 'value1' },
+        { name: 'string-field', value: 'new-string' }
+      ]
+
       return fields.init()
         .then(() => fields.setMultiple(fieldsToUpdate))
         .then(config => {
-          expect(config[key1]).to.equal(newValue1)
-          expect(config[key2]).to.equal(newValue2)
+          expect(config['values-field']).to.equal('value1')
+          expect(config['string-field']).to.equal('new-string')
         })
     })
   })
