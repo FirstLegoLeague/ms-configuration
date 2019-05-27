@@ -14,7 +14,7 @@
     "lint:fix": "eslint --ext .js --fix ./"
   },
   "dependencies": {
-    "@first-lego-league/ms-messenger": "^1.0.3",
+    "@first-lego-league/ms-messenger": "1.0.4",
     "bluebird": "^3.5.1",
     "mhub": "^0.9.1",
     "path": "^0.12.7",
