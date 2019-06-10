@@ -21,3 +21,45 @@ exports.configWithDefaultValues = {
 }
 
 exports.ReadYamlPromiseMock = chai.spy.returns(Promise.resolve({ config }))
+
+exports.createSpy = defaultValuesFn => chai.spy(async () => {
+  return {
+    config: [{
+      fields: [
+        {
+          name: 'boolean-field',
+          type: 'boolean',
+          display: 'boolean field',
+          get default () {
+            return defaultValuesFn()['boolean-field']
+          }
+        },
+        {
+          name: 'numeric-field',
+          type: 'number',
+          display: 'number field',
+          get default () {
+            return defaultValuesFn()['numeric-field']
+          }
+        },
+        {
+          name: 'string-field',
+          type: 'string',
+          display: 'string field',
+          get default () {
+            return defaultValuesFn()['string-field']
+          }
+        },
+        {
+          name: 'values-field',
+          type: 'values',
+          display: 'values-field',
+          get default () {
+            return defaultValuesFn()['values-field']
+          },
+          options: ['value1', 'value2', 'values3']
+        }
+      ]
+    }]
+  }
+})
