@@ -1,7 +1,7 @@
 # Test against the latest version of this Node.js version
 environment:
   matrix:
-    - nodejs_version: "8.9.0"
+    - nodejs_version: "8.10.0"
     - nodejs_version: "10.13.0"
 
 # Install scripts. (runs after repo cloning)
