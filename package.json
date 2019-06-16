@@ -2,11 +2,11 @@
   "name": "@first-lego-league/ms-configuration",
   "version": "2.0.3",
   "main": "index.js",
-  "repository": "https://github.com/FirstLegoLeagueIL/configuration.git",
+  "repository": "https://github.com/FirstLegoLeague/configuration.git",
   "author": "Idan Stark <idanstark42@gmail.com>",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "engines": {
-    "node": ">=8.2.1"
+    "node": ">=8.x"
   },
   "scripts": {
     "test": "cross-env SECRET=mock_secret PORT=0000 nyc --all --reporter=text --check-coverage --lines 90 mocha --recursive",
