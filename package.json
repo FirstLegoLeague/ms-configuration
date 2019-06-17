@@ -14,8 +14,8 @@
   ],
   "scripts": {
     "test": "cross-env SECRET=mock_secret PORT=0000 mocha --recursive",
-    "test:coverage": "nyc --all -r text cross-env $npm_execpath run test",
-    "test:ci": "nyc --all -r lcov cross-env $npm_execpath run test && codecov",
+    "test:coverage": "nyc --all -r text cross-env yarpm run test",
+    "test:ci": "nyc --all -r lcov yarpm run test && codecov",
     "lint": "eslint --ext .js ./",
     "lint:fix": "eslint --ext .js --fix ./"
   },
@@ -44,7 +44,8 @@
     "eslint-plugin-standard": "^4.0.0",
     "mocha": "^6.1.4",
     "nyc": "^14.1.1",
-    "proxyquire": "^2.1.0"
+    "proxyquire": "^2.1.0",
+    "yarpm": "^0.2.1"
   },
   "peerDependencies": {
     "@first-lego-league/ms-correlation": "^0.0.5",
