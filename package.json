@@ -13,7 +13,9 @@
     "lib/**/*.js"
   ],
   "scripts": {
-    "test": "cross-env SECRET=mock_secret PORT=0000 nyc --all --reporter=text --check-coverage --lines 90 mocha --recursive",
+    "test": "cross-env SECRET=mock_secret PORT=0000 mocha --recursive",
+    "test:coverage": "nyc --all -r text $npm_execpath run test",
+    "test:ci": "nyc --all -r lcov $npm_execpath run test && codecov",
     "lint": "eslint --ext .js ./",
     "lint:fix": "eslint --ext .js --fix ./"
   },
@@ -30,6 +32,7 @@
     "@first-lego-league/ms-logger": "^1.6.0",
     "chai": "^4.2.0",
     "chai-spies": "^1.0.0",
+    "codecov": "^3.5.0",
     "cross-env": "^5.2.0",
     "eslint": "^5.16.0",
     "eslint-config-standard": "^12.0.0",
