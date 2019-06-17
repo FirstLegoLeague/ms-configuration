@@ -14,8 +14,8 @@
   ],
   "scripts": {
     "test": "cross-env SECRET=mock_secret PORT=0000 mocha --recursive",
-    "test:coverage": "nyc --all -r text $npm_execpath run test",
-    "test:ci": "nyc --all -r lcov $npm_execpath run test && codecov",
+    "test:coverage": "nyc --all -r text cross-env $npm_execpath run test",
+    "test:ci": "nyc --all -r lcov %npm_execpath% run test && codecov",
     "lint": "eslint --ext .js ./",
     "lint:fix": "eslint --ext .js --fix ./"
   },
