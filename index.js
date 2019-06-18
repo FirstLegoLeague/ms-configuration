@@ -18,6 +18,7 @@ const messenger = new Messenger({
   }
 })
 
+
 let initPromise
 
 const init = () => {
