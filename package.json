@@ -1,6 +1,6 @@
 {
   "name": "@first-lego-league/ms-configuration",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "main": "index.js",
   "repository": "https://github.com/FirstLegoLeague/configuration.git",
   "author": "Idan Stark <idanstark42@gmail.com>",
