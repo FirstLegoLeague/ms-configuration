@@ -19,6 +19,10 @@ First, install the package:
 Or use yarn (prefered):  
 `yarn add @first-lego-league/ms-configuration`
 
+
+dsadfdsafasdfas
+
+
 After the installation, you can set and get fields:  
 ```javascript
 const config = require('ms-configuration')
