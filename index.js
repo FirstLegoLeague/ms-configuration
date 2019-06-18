@@ -1,6 +1,8 @@
 const path = require('path')
 const { Messenger } = require('@first-lego-league/ms-messenger')
-const logger = require('@first-lego-league/ms-logger').Logger()
+const { Logger } = require('@first-lego-league/ms-logger')
+
+const logger = new Logger()
 
 const Fields = require('./lib/fields')
 
