@@ -1,9 +1,11 @@
 [![npm](https://img.shields.io/npm/v/@first-lego-league/ms-configuration.svg)](https://www.npmjs.com/package/@first-lego-league/ms-configuration)
+[![codecov](https://codecov.io/gh/FirstLegoLeague/ms-configuration/branch/master/graph/badge.svg)](https://codecov.io/gh/FirstLegoLeague/ms-configuration)
+[![Build status](https://ci.appveyor.com/api/projects/status/ec89gr4r94v7haxt/branch/master?svg=true)](https://ci.appveyor.com/project/2roy999/ms-configuration/branch/master)
+[![GitHub](https://img.shields.io/github/license/FirstLegoLeague/ms-configuration.svg)](https://github.com/FirstLegoLeague/ms-configuration/blob/master/LICENSE)
+
 [![David Dependency Status](https://david-dm.org/FirstLegoLeague/ms-configuration.svg)](https://david-dm.org/FirstLegoLeague/ms-configuration)
 [![David Dev Dependency Status](https://david-dm.org/FirstLegoLeague/ms-configuration/dev-status.svg)](https://david-dm.org/FirstLegoLeague/ms-configuration#info=devDependencies)
 [![David Peer Dependencies Status](https://david-dm.org/FirstLegoLeague/ms-configuration/peer-status.svg)](https://david-dm.org/FirstLegoLeague/ms-configuration?type=peer)
-[![Build status](https://ci.appveyor.com/api/projects/status/ec89gr4r94v7haxt/branch/master?svg=true)](https://ci.appveyor.com/project/2roy999/ms-configuration/branch/master)
-[![GitHub](https://img.shields.io/github/license/FirstLegoLeague/ms-configuration.svg)](https://github.com/FirstLegoLeague/ms-configuration/blob/master/LICENSE)
 
 # MS-Configuration
 
