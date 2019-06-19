@@ -15,7 +15,7 @@
   "scripts": {
     "test": "cross-env SECRET=mock_secret PORT=0000 mocha --recursive",
     "test:coverage": "nyc --all -r text cross-env yarpm run test",
-    "test:ci": "nyc --all -r lcov yarpm run test && codecov --env=nodejs_version",
+    "test:ci": "nyc --all -r lcov yarpm run test && codecov",
     "lint": "eslint --ext .js ./",
     "lint:fix": "eslint --ext .js --fix ./"
   },
@@ -29,7 +29,7 @@
   "devDependencies": {
     "@first-lego-league/eslint-config": "^1.0.0",
     "@first-lego-league/ms-correlation": "^1.0.1",
-    "@first-lego-league/ms-logger": "^1.6.0",
+    "@first-lego-league/ms-logger": "^2.0.0",
     "chai": "^4.2.0",
     "chai-spies": "^1.0.0",
     "codecov": "^3.5.0",
@@ -49,6 +49,6 @@
   },
   "peerDependencies": {
     "@first-lego-league/ms-correlation": "^1.0.0",
-    "@first-lego-league/ms-logger": "^1.6.0"
+    "@first-lego-league/ms-logger": "^1.4.1 || ^2.0.0"
   }
 }
