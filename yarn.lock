@@ -114,12 +114,13 @@
     on-headers "^1.0.2"
     router "^1.3.3"
 
-"@first-lego-league/ms-messenger@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@first-lego-league/ms-messenger/-/ms-messenger-1.1.0.tgz#8e5bd8c712f70c03559d8e147964965e721cac30"
-  integrity sha512-OhGghirRug0mIHxbSPaBEQKnB9szT4ZVsSCwZ5POtl4TaA2oXyi7xyiPSJhs3920WqKu1Lv2i1dMKQqtlMQfQA==
+"@first-lego-league/ms-messenger@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@first-lego-league/ms-messenger/-/ms-messenger-1.2.0.tgz#9935f01ac4b89c15ad25d9ce56a6e6f298347930"
+  integrity sha512-6ojEXeAl5/BMQeD9ufY4yyTYn9V2mUJzLioACUc03H09k+f9O4QtDBcIFS04xg2a05l0u+W+kdmsRvKJlKFjSg==
   dependencies:
-    mhub "^1.0.0"
+    bluebird "^3.5.4"
+    mhub "^2.0.0"
 
 "@types/mkdirp@^0.3.29":
   version "0.3.29"
@@ -279,6 +280,11 @@ astral-regex@^1.0.0:
   resolved "https://registry.yarnpkg.com/astral-regex/-/astral-regex-1.0.0.tgz#6c8c3fb827dd43ee3918f27b82782ab7658a6fd9"
   integrity sha512-+Ryf6g3BKoRc7jfp7ad8tM4TtMiaWvbF/1/sQcZPkkS7ag3D5nMBCe2UfOTONtAkaG0tO0ij3C5Lwmf1EiyjHg==
 
+async-limiter@~1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/async-limiter/-/async-limiter-1.0.1.tgz#dd379e94f0db8310b08291f9d64c3209766617fd"
+  integrity sha512-csOlWGAcRFJaI6m+F2WKdnMKr4HhdhFVBk0H/QbJFMCr+uO2kwohwXQPxw/9OCxp05r5ghVBFSyioixx3gfkNQ==
+
 atob@^2.1.1:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
@@ -302,7 +308,7 @@ base@^0.11.1:
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
 
-bluebird@^3.5.5:
+bluebird@^3.5.4, bluebird@^3.5.5:
   version "3.5.5"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.5.tgz#a8d0afd73251effbbd5fe384a77d73003c17a71f"
   integrity sha512-5am6HnnfN+urzt4yfg7IgTbotDjIT/u8AJpEt0sIU9FtXfVeezXAPKswrG+xKUCOYAINpSdgZVDU6QFh+cuH3w==
@@ -1970,6 +1976,21 @@ mhub@^1.0.0:
     ws "^1.1.4"
     yargs "^4.7.1"
 
+mhub@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/mhub/-/mhub-2.0.0.tgz#48f3d128ec9d4e51377f1cbc06eb7f67cf98eae9"
+  integrity sha512-jIY/QZ7XzA3+WQxF8KrHyhwR7l2A+8szg0yccIvn2t74nug3vEYHeN3CEnSCndt4db/ma1kBzUx78rsm/miWrA==
+  dependencies:
+    "@types/mkdirp" "^0.3.29"
+    "@types/node" "^8.0.17"
+    "@types/ws" "0.0.35"
+    "@types/yargs" "0.0.33"
+    micromatch "^3.1.10"
+    mkdirp "^0.5.1"
+    source-map-support "^0.4.1"
+    ws "^3.3.1"
+    yargs "^4.7.1"
+
 micromatch@^3.1.10:
   version "3.1.10"
   resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-3.1.10.tgz#70859bc95c9840952f359a068a3fc49f9ecfac23"
@@ -2800,7 +2821,7 @@ rxjs@^6.4.0:
   dependencies:
     tslib "^1.9.0"
 
-safe-buffer@^5.0.1, safe-buffer@~5.1.1:
+safe-buffer@^5.0.1, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
   integrity sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==
@@ -3233,6 +3254,11 @@ ultron@1.0.x:
   resolved "https://registry.yarnpkg.com/ultron/-/ultron-1.0.2.tgz#ace116ab557cd197386a4e88f4685378c8b2e4fa"
   integrity sha1-rOEWq1V80Zc4ak6I9GhTeMiy5Po=
 
+ultron@~1.1.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/ultron/-/ultron-1.1.1.tgz#9fe1536a10a664a65266a1e3ccf85fd36302bc9c"
+  integrity sha512-UIEXBNeYmKptWH6z8ZnqTeS8fV74zG0/eRU9VGkpzz+LIJNs8W/zM/L+7ctCkRrgbNnnR0xxw4bKOr0cW0N0Og==
+
 union-value@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/union-value/-/union-value-1.0.1.tgz#0b6fe7b835aecda61c6ea4d4f02c14221e109847"
@@ -3394,6 +3420,15 @@ ws@^1.1.4:
   dependencies:
     options ">=0.0.5"
     ultron "1.0.x"
+
+ws@^3.3.1:
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-3.3.3.tgz#f1cf84fe2d5e901ebce94efaece785f187a228f2"
+  integrity sha512-nnWLa/NwZSt4KQJu51MYlCcSQ5g7INpOrOMt4XV8j4dqTXdmlUmSHQ8/oLC069ckre0fRsgfvsKwbTdtKLCDkA==
+  dependencies:
+    async-limiter "~1.0.0"
+    safe-buffer "~5.1.0"
+    ultron "~1.1.0"
 
 y18n@^3.2.1:
   version "3.2.1"
