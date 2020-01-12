@@ -7,43 +7,27 @@
 [![David Dev Dependency Status](https://david-dm.org/FirstLegoLeague/ms-configuration/dev-status.svg)](https://david-dm.org/FirstLegoLeague/ms-configuration#info=devDependencies)
 [![David Peer Dependencies Status](https://david-dm.org/FirstLegoLeague/ms-configuration/peer-status.svg)](https://david-dm.org/FirstLegoLeague/ms-configuration?type=peer)
 
-# MS-Configuration
+# FIRST LEGO League Configuration
+A Configuration package, working according to the _FIRST_ LEGO League TMS [Module Standard configuration section](https://github.com/FirstLegoLeague/architecture/blob/master/module-standard/v1.0-SNAPSHOT.md#configuration).
 
-A configuration package supporting the MS (Module Standard)
+## Logic
+This package is connected to the Launcher configuration MHub node, using the [ms-messenger](https://github/FirstLegoLeague/ms-messenger) package. It holds an in-memory state of the configuration data saved in the launcher, and allows the user to both get and set it, using MHub messages.
 
 ## Usage
 
-First, install the package:
-`npm install @first-lego-league/ms-configuration`
-
-Or use yarn (prefered):  
-`yarn add @first-lego-league/ms-configuration`
-
-After the installation, you can set and get fields:  
+You can set and get fields in the following ways:  
 ```javascript
-const config = require('ms-configuration')
-
+const config = require('@first-lego-league/ms-configuration')
 config.set('some-field-name', someFieldValue)
-
-config.get('some-field-name')
-
 config.setMultiple([{ name: 'field1-name', value: 'field1-value' }, { name: 'field2-name', value: 'field2-value' }, ...])
+
+config.get('some-field-name') // returns field value
+config.all() // returns an object of key-value pairs containing all of the configuration field names.
 
 ```
 
-If you add the environment variable `DEV=true`, the module would log into the `default` Mhub node instead of the MS sepcified `configuration` node.
-
-## Development
-1. Fork this repository
-2. make some changes
-3. create a Pull Request
-4. Wait for a CR from the code owner
-5. make sure everything is well
-6. merge
-
-A few things to notice while developing:
-* Use `yarn` not `npm`
-* Follow javascript standard as described [here](https://standardjs.com/)
-* Keep the package lightweight and easy to use
-* Don't break API if not neccessary
-* Be creative and have fun
+## Contribution
+To contribute to this repository, simply create a PR and set one of the Code Owners to be a reviewer.
+Please notice the linting and UT, because they block merge.
+Keep the package lightweight and easy to use.
+Thank you for contributing!
