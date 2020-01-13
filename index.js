@@ -1,15 +1,11 @@
 const path = require('path')
-const { Messenger } = require('@first-lego-league/ms-messenger')
-const { Logger } = require('@first-lego-league/ms-logger')
-
-const logger = new Logger()
+const { createMessenger } = require('@first-lego-league/ms-messenger')
 
 const Fields = require('./lib/fields')
 
 const moduleName = path.basename(path.resolve())
 const topic = `config:${moduleName}`
-const messenger = new Messenger({
-  logger,
+const messenger = createMessenger({
   node: 'configuration',
   clientId: `${moduleName}_configuration`,
   credentials: {
