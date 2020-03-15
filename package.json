@@ -1,7 +1,7 @@
 {
   "name": "@first-lego-league/ms-configuration",
   "description": "A configuration package supporting the MS (Module Standard)",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "main": "index.js",
   "repository": "https://github.com/FirstLegoLeague/configuration.git",
   "author": "Idan Stark <idanstark42@gmail.com>",
@@ -21,7 +21,7 @@
     "lint:fix": "eslint --ext .js --fix ./"
   },
   "dependencies": {
-    "@first-lego-league/ms-messenger": "^1.2.2",
+    "@first-lego-league/ms-messenger": "^1.2.5",
     "bluebird": "^3.5.5",
     "mhub": "^1.0.0",
     "path": "^0.12.7",
