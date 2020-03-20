@@ -19,7 +19,7 @@ let initPromise
 const init = () => {
   if (!initPromise) {
     initPromise = Fields.init()
-      .then(() => messenger.on(topic, ({ data }) => Fields.setMultiple(data.fields)))
+      .then(() => messenger.on(topic, data => Fields.setMultiple(data.fields)))
   }
   return initPromise
 }
