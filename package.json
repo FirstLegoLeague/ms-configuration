@@ -1,7 +1,7 @@
 {
   "name": "@first-lego-league/ms-configuration",
   "description": "A configuration package supporting the MS (Module Standard)",
-  "version": "2.3.1",
+  "version": "2.4.0",
   "main": "index.js",
   "repository": "https://github.com/FirstLegoLeague/configuration.git",
   "author": "Idan Stark <idanstark42@gmail.com>",
