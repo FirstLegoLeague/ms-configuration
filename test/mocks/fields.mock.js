@@ -16,3 +16,6 @@ const fieldsSandbox = chai.spy.sandbox()
 fieldsSandbox.on(fields, ['init', 'all', 'get', 'set', 'setMultiple'])
 
 exports.FieldsMock = fields
+
+exports.FieldsMock['@global'] = true
+exports.FieldsMock['@noCallThru'] = true

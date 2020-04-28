@@ -21,11 +21,14 @@ messengerSandbox.on(messenger, Object.keys(messenger))
 exports.messenger = messenger
 
 exports.MessengerMock = {
-  Messenger: function Messenger () {
+  createMessenger: function () {
     return messenger
   }
 }
 
+exports.MessengerMock['@global'] = true
+exports.MessengerMock['@noCallThru'] = true
+
 exports.triggerListener = data => {
-  return messenger.listener({ data })
+  return messenger.listener(data)
 }

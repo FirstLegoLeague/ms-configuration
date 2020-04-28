@@ -66,7 +66,7 @@ describe('ms-config index file', () => {
         .then(() => expect(messenger.send).to.have.been.called.with({ fields }))
     })
 
-    it('calls Fields.setMultiple   with the key-value pairs', () => {
+    it('calls Fields.setMultiple with the key-value pairs', () => {
       const name1 = 'name1'
       const value1 = 'value1'
       const name2 = 'name2'
